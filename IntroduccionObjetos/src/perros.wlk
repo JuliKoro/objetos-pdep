@@ -1,6 +1,7 @@
 // Modelado de objeto
 object poroto {
   // atributos / estado
+  // estado inicial
   const raza = "Salchicha"
   var energia = 500
   
@@ -33,5 +34,33 @@ object poroto {
   }
 }
 
+object sally { // otro objeto
+  // atributos / estado
+  const raza = "Salchicha"
+  var energia = 500
+  
+  method jugar() {
+    energia -= 20
+    //
+  }
+  
+  method ladrido() {
+    return "Wow!"
+  }
+  
+  method energia() { // getter
+    return energia
+  }
+  
+  method energia(unaEnergia) { // setter
+    energia = unaEnergia
+  }
+  
+  method raza() {
+    return raza
+  }
+}
 
-// objeto.mensaje()
+// objeto.mensaje() -> referencia.mensaje()
+// == -> comparo por igualdad
+// === -> comparo por identidad
