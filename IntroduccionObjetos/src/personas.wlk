@@ -27,7 +27,7 @@ object mandy {
 	const nombre = "Mandy"
 	var edad = 15
  	var energia = 200
-  	var compania = poroto
+  	var compania = sally
 
   	method jugar() {
     	energia -= 30
