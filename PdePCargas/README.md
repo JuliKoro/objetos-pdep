@@ -1,6 +1,6 @@
 # [PdeP Cargas](https://docs.google.com/document/d/1knTRBIF3WLOtRO6JpPGR9ooWsa-0ckBm7OlFeG92LhM/edit)
 
-_ _PdeP Cargas_ _ es una empresa que, como su nombre lo indica, se dedica al transporte de cargas en todo el país. Nos pidieron que desarrollemos una aplicación para controlar los gastos que tiene la empresa a medida que los camiones realizan viajes.
+_PdeP Cargas_ es una empresa que, como su nombre lo indica, se dedica al transporte de cargas en todo el país. Nos pidieron que desarrollemos una aplicación para controlar los gastos que tiene la empresa a medida que los camiones realizan viajes.
 
 Para sus operaciones habituales PdeP Cargas cuenta con los siguientes vehículos:
 - **Camión de verduras:** lleva una cierta cantidad de cajones de verduras, que pesan 50kg cada una. Además sabemos que su velocidad máxima es de 80 km/h restando un km/h por cada 500kg de carga. Además, sabemos que su kilometraje se encuentra actualmente en 700.000kms.
