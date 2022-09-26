@@ -9,7 +9,11 @@ object camionDeVerduras {
 	
 	method pesoCarga() = cantidadDeCajas * pesoPorCaja // retorno en metodos de una sola linea
 	
-	method recorrer(kms, velocidad){
+	method cantidadDeCajas(unasCajas) { // setter
+		cantidadDeCajas = unasCajas
+	}
+	
+	method recorrer(kms, velocidad){ // método con polimorfismo -> misma forma en todos los objetos
 		kilometraje += kms
 	}
 }
@@ -22,6 +26,10 @@ object scanion5000 {
 	
 	method pesoCarga() = densidad * maxCapacidad
 	
+	method densidad(unaDensidad) { // setter
+		densidad = unaDensidad
+	}
+	
 	method recorrer(kms, velocidad){
 		// no hace nada
 	}
@@ -33,7 +41,11 @@ object camionCerealero {
 	
 	method velocidadMaxima() = 60 - nivelDeterioro
 	
-	method pesoCarga() = return pesoCarga // getter
+	method pesoCarga(unPeso) {
+		pesoCarga = unPeso // setter
+	}
+	
+	method pesoCarga() = pesoCarga // getter
 	
 	method recorrer(kms, velocidad){
 		nivelDeterioro += 0.max(velocidad - 45) // numero.max(otroNumero) -> retorna el mayos de dos numeros
