@@ -8,6 +8,8 @@ object mario {
 	
 	method agotamiento() = agotamiento
 	
+	method ataque() = ataque
+	
 	method recibirAtaque(unDanio) {
 		agotamiento += unDanio
 	}
