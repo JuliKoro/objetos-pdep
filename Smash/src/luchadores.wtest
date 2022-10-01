@@ -5,9 +5,9 @@ describe "Test de Mario" {
 	test "Mario al evolucionar el ataque, cambia a Bola de Fuego" {
 		mario.evolucionar() // ejecuto el mensaje a testear
 		assert.equals("Bola de Fuego", mario.ataque()) // verifico que el resultado sea igual a lo esperado
-		// assert.equals(valorEsperado, unObjeto.getter())
-		//								^^^^^^^^^^^^^^^^
-		//								  valorDePrueba
+		/* assert.equals(valorEsperado, unObjeto.getter())
+										^^^^^^^^^^^^^^^^
+										  valorDePrueba */
 	}
 	
 	test "Mario al recibir un ataque se agota" {
@@ -36,20 +36,20 @@ describe "Test de Sora" {
 	test "Cuando sora evoluciona a todos sus comandos se les agrega un +" {
 		const comandosEvolucionados = #{"Pyro+", "Hielo+", "Electro+"}
 		sora.evolucionar()
-		assert.equals(comandosEvolucionados , sora.comandos())
+		assert.equals(comandosEvolucionados, sora.comandos())
 	}
 	
 	test "Cuando sora evoluciona su nivel se incrementa en 1" {
 		const nivelAntesDeEvolucionar = sora.nivel() // se pueden definir las constantes y variables necesarias
 		sora.evolucionar()
-		assert.equals(nivelAntesDeEvolucionar + 1 , sora.nivel())
+		assert.equals(nivelAntesDeEvolucionar + 1, sora.nivel())
 	}
 }
 
 describe "Tests de link" {
 	
 	test "Link al evolucionar pierde Espada del Heroe y obtiene nuevo equipamiento" {
-		const equipamientoLuegoDeEvolucionar = #{"Espada Maestra" , "Gancho" , "Bombas" , "Escudo Hyliano", "Arco"}
+		const equipamientoLuegoDeEvolucionar = #{"Espada Maestra", "Gancho", "Bombas", "Escudo Hyliano", "Arco"}
 		link.evolucionar()
 		assert.equals(equipamientoLuegoDeEvolucionar , link.armas())
 	}
