@@ -6,6 +6,8 @@ object pamela {
 	
 	method energia() = energia
 	
+	method tieneEnergia() = energia > 0
+	
 	method cantidadDeElementos() = inventario.size()
 	
 	method ultimoElemento() = inventario.last() // lista.last() -> retorna el último elemento de una lista
@@ -22,6 +24,10 @@ object pamela {
 		energia += 400
 	}
 	
+	method lucharContraEquipo(equipo) {
+		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)}) // pamela lucha contra todos los del otro equipo
+	}
+	
 	method perderEnergia(danio) {
 		energia -= danio
 	}
@@ -34,6 +40,8 @@ object pocardo {
 	method gritoDeVictoria() = "¡Siente el poder de la musica!"
 	
 	method energia() = energia
+	
+	method tieneEnergia() = energia > 0
 	
 	method cantidadDeElementos() = inventario.size()
 	
@@ -51,6 +59,10 @@ object pocardo {
 		energia += 500
 	}
 	
+	method lucharContraEquipo(equipo) {
+		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
+	}
+	
 	method perderEnergia(danio) {
 		energia -= danio
 	}
@@ -63,6 +75,8 @@ object tulipan {
 	method gritoDeVictoria() = "¡Hora de cuidar las plantas!"
 	
 	method energia() = energia
+	
+	method tieneEnergia() = energia > 0
 	
 	method cantidadDeElementos() = inventario.size()
 	
@@ -80,6 +94,10 @@ object tulipan {
 		unPersonaje.perderEnergia(unPersonaje.energia() * 0.5)
 	}
 	
+	method lucharContraEquipo(equipo) {
+		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
+	}
+	
 	method perderEnergia(danio) {
 		energia -= danio
 	}
@@ -92,6 +110,8 @@ object toro {
 	method gritoDeVictoria() =  "¡No se metan con el toro!"
 	
 	method energia() = energia
+	
+	method tieneEnergia() = energia > 0
 	
 	method cantidadDeElementos() = inventario.size()
 	
@@ -109,6 +129,10 @@ object toro {
 		unPersonaje.perderEnergia(unPersonaje.cantidadDeElementos() * 200)
 		self.sumarElemento(unPersonaje.ultimoElemento())
 		unPersonaje.quitarElemento(unPersonaje.ultimoElemento())
+	}
+	
+	method lucharContraEquipo(equipo) {
+		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
 	}
 	
 	method perderEnergia(danio) {
