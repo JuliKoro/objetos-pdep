@@ -2,7 +2,7 @@ import estudiante.*
 
 object docente {
 	var cfd = 3 // Coeficiente de Felicidad Docente
-	const estudiantes = #{lucia, juan, perla}
+	const estudiantes = #{}
 	
 	method estudianesEjemplares() {
 		return estudiantes.filter({ unEstudiante => unEstudiante.esEjemplar() })

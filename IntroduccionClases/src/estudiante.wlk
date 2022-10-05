@@ -48,3 +48,4 @@ const juan  = new Estudiante(notas = [4, 7, 9, 9], materiasCursadas = ["Programa
 const perla = new Estudiante(notas = [4, 7, 9, 9], materiasCursadas = ["Programación II", "Sistemas Operativos I", "Análisis Matemático I"])
 const ingresante = new Estudiante() // instancias vacías
 const otroIngresatne = new Estudiante() // instancias distintas aunque las dos esten vacias
+const unOyente = new Oyente() // objeto cuasi-bien conocido
