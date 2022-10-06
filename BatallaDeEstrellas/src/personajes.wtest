@@ -1,0 +1,88 @@
+import personajes.*
+
+const personajes = [pamela, pocardo, tulipan, toro]
+
+describe "Tests de Pamela" {
+	test "Al luchar mano a mano contra un enemigo, la energía de Pamela subirá 400 puntos" {
+		pamela.lucharContra(personajes.anyOne())
+		
+		assert.equals(6400, pamela.energia())
+	}
+	
+	test "Toro al combatir mano a mano, Pamela pierde el ultimo elemento si él no lo tiene" {
+		toro.lucharContra(pamela)
+		
+		assert.equals("Cinta de papel", pamela.ultimoElemento())
+		assert.equals(3, pamela.cantidadDeElementos())
+	}
+	
+}
+
+describe "Tests de Pocardo" {
+	test "Al luchar mano a mano contra un enemigo, la energía de Pocardo subirá 500 puntos" {
+		pocardo.lucharContra(personajes.anyOne())
+		
+		assert.equals(6100, pocardo.energia())
+	}
+	
+	test "Toro al combatir mano a mano, Pocardo pierde el ultimo elemento si él no lo tiene" {
+		toro.lucharContra(pocardo)
+		
+		assert.equals("Curitas", pocardo.ultimoElemento())
+		assert.equals(2, pocardo.cantidadDeElementos())
+	}
+
+}
+
+describe "Tests de Tulipan" {
+	test "Cuando está mano a mano con un enemigo, le hace perder el 50% de la energía" {
+		const unOponente = personajes.anyOne()
+		const energiaInicialOponente = unOponente.energia()
+		tulipan.lucharContra(unOponente)
+		
+		assert.equals(energiaInicialOponente * 0.5, unOponente.energia())
+	}
+	
+	test "Toro al combatir mano a mano, Tulipan pierde el ultimo elemento si él no lo tiene" {
+		toro.lucharContra(tulipan)
+		
+		assert.equals("Maceta", tulipan.ultimoElemento())
+		assert.equals(3, tulipan.cantidadDeElementos())
+	}
+	
+}
+
+describe "Tests de El Toro" {
+	test "Al cobatir mano a mano, quita 200 de energía por cada elemento que tengan sus contrincantes." {
+		const unOponente = personajes.anyOne()
+		const energiaInicialOponente = unOponente.energia()
+		const tamanioInventarioOponente = unOponente.cantidadDeElementos()
+		
+		toro.sumarElemento("ElementoX")
+		toro.lucharContra(unOponente)
+		
+		assert.equals(energiaInicialOponente - (200 * tamanioInventarioOponente), unOponente.energia())
+	}
+	
+	test "Al combatir mano a mano, se queda con el último elemento en caso de no tenerlo" {
+		const unOponente = personajes.anyOne()
+		const ultimoElementoOponente = unOponente.ultimoElemento()
+		
+		toro.sumarElemento("ElementoX")
+		toro.lucharContra(unOponente)
+		
+		assert.equals(ultimoElementoOponente, toro.ultimoElemento())
+	}
+	
+	test "Al combatir mano a mano, no se queda con el último elemento en caso de tenerlo" {
+		const unOponente = personajes.anyOne()
+		
+		toro.sumarElemento("ElementoX")
+		toro.sumarElemento(unOponente.ultimoElemento())
+		toro.lucharContra(unOponente)
+		
+		assert.equals(1, toro.cantidadDeElementos())
+	}
+}
+
+// los combates mano a mano entre personajes iguales simepre tiran mal los valores, ya que se hacen daño asi mismo
