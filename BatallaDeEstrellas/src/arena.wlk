@@ -4,6 +4,9 @@ object arena {
 	const equipoRojo = #{pamela, toro}
 	const equipoAzul = #{pocardo, tulipan}
 	
+	method equipoRojo() = equipoRojo
+	method equipoAzul() = equipoAzul
+	
 	method combatir() {
 		self.pelearEntre(equipoRojo, equipoAzul)
 		self.pelearEntre(equipoAzul, equipoRojo)

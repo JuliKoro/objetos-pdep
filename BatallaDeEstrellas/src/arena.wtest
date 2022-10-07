@@ -1,0 +1,11 @@
+import arena.*
+
+describe "Tests de arena" {
+	test "Pamela y Toro vs Pocardo y Tulipan (equipoRojo vs equipoAzul) [default]" {
+		
+		arena.combatir()
+		
+		assert.equals(arena.equipoAzul(), arena.equipoGanador())
+		
+	}
+}

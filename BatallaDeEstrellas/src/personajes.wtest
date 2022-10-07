@@ -1,4 +1,5 @@
 import personajes.*
+import arena.*
 
 const personajes = [pamela, pocardo, tulipan, toro]
 
@@ -7,6 +8,14 @@ describe "Tests de Pamela" {
 		pamela.lucharContra(personajes.anyOne())
 		
 		assert.equals(6400, pamela.energia())
+	}
+	
+	test "Luchar contra un equipo, la energía de Pamela subirá 400 puntos por cada contrincante" {
+		const equipo = #{pocardo, tulipan}
+		
+		pamela.lucharContraEquipo(equipo)
+		
+		assert.equals(6800, pamela.energia())
 	}
 	
 	test "Toro al combatir mano a mano, Pamela pierde el ultimo elemento si él no lo tiene" {
@@ -25,6 +34,14 @@ describe "Tests de Pocardo" {
 		assert.equals(6100, pocardo.energia())
 	}
 	
+	test "Luchar contra un equipo, la energía de Pocardo subirá 500 puntos por cada contrincante" {
+		const equipo = #{pamela, toro}
+		
+		pocardo.lucharContraEquipo(equipo)
+		
+		assert.equals(6600, pocardo.energia())
+	}
+	
 	test "Toro al combatir mano a mano, Pocardo pierde el ultimo elemento si él no lo tiene" {
 		toro.lucharContra(pocardo)
 		
@@ -41,6 +58,14 @@ describe "Tests de Tulipan" {
 		tulipan.lucharContra(unOponente)
 		
 		assert.equals(energiaInicialOponente * 0.5, unOponente.energia())
+	}
+	
+	test "Luchar contra un equipo, le hace perder el 50% de la energía a cada contrincante" {
+		const equipo = #{pamela, toro}
+		
+		tulipan.lucharContraEquipo(equipo)
+		
+		assert.equals(6900, arena.energiaDeEquipo(equipo))
 	}
 	
 	test "Toro al combatir mano a mano, Tulipan pierde el ultimo elemento si él no lo tiene" {
@@ -82,6 +107,14 @@ describe "Tests de El Toro" {
 		toro.lucharContra(unOponente)
 		
 		assert.equals(1, toro.cantidadDeElementos())
+	}
+	
+	test "Luchar contra un equipo, le quita 200 de energia por elemento a cada oponente" {
+		const equipo = #{pocardo, tulipan}
+		
+		toro.lucharContraEquipo(equipo)
+		
+		assert.equals(12600, arena.energiaDeEquipo(equipo))
 	}
 }
 
