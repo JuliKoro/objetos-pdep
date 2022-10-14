@@ -103,6 +103,41 @@ object tulipan {
 	}
 }
 
+object primardo {
+	var energia = 7500
+	const inventario = ["Mascara", "Short de lucha"]
+	
+	method gritoDeVictoria() = "¡¡Soy el mejoooooor!!"
+	
+	method energia() = energia
+	
+	method tieneEnergia() = energia > 0
+	
+	method cantidadDeElementos() = inventario.size()
+	
+	method ultimoElemento() = inventario.last()
+	
+	method sumarElemento(unElemento) {
+		inventario.add(unElemento)
+	}
+	
+	method quitarElemento(unElemento) {
+		inventario.remove(unElemento)
+	}
+	
+	method lucharContra(unPersonaje) {
+		unPersonaje.perderEnergia(unPersonaje.energia() * 0.7)
+	}
+	
+	method lucharContraEquipo(equipo) {
+		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
+	}
+	
+	method perderEnergia(danio) {
+		energia -= danio
+	}
+}
+
 object toro {
 	var energia = 7800
 	const inventario = #{} // es un set para poder robar elementos no repetidos
