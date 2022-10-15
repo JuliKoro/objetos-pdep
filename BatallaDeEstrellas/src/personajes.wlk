@@ -1,8 +1,14 @@
-object pamela {
-	var energia = 6000
-	const inventario = ["Algodon", "Agua oxigenada", "Cinta de papel", "Cinta de papel"]
-	// la lista es const, aunque sus elementos (referencias a otros objetos) pueden cambiar
-	method gritoDeVictoria() = "¡Aca paso la Pamela!"
+// Clase abstracta -> NUNCA la instanciamos
+class Personaje { // superclase
+	var energia
+	const inventario // la lista es const, aunque sus elementos (referencias a otros objetos) pueden cambiar
+	const energiaDeLucha
+	const gritoDeVictoria
+	
+	// método abstracto -> implica q todas las subclases deben de definirlo
+	method lucharContra(unPersonaje) // no tiene comportamiento
+		
+	method gritoDeVictoria() = gritoDeVictoria
 	
 	method energia() = energia
 	
@@ -10,91 +16,18 @@ object pamela {
 	
 	method cantidadDeElementos() = inventario.size()
 	
-	method ultimoElemento() = inventario.last() // lista.last() -> retorna el último elemento de una lista
+	method ultimoElemento() = inventario.last()  // lista.last() -> retorna el último elemento de una lista
 	
 	method sumarElemento(unElemento) {
 		inventario.add(unElemento)
 	}
 	
-	method quitarElemento(unElemento) {
+	method quitarElemento(unElemento) { 
 		inventario.remove(unElemento)
 	}
 	
-	method lucharContra(unPersonaje) {
-		energia += 400
-	}
-	
-	method lucharContraEquipo(equipo) {
-		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)}) // pamela lucha contra todos los del otro equipo
-	}
-	
-	method perderEnergia(danio) {
-		energia -= danio
-	}
-}
-
-object pocardo {
-	var energia = 5600
-	const inventario = ["Guitarra", "Curitas", "Cotonetes"]
-	
-	method gritoDeVictoria() = "¡Siente el poder de la musica!"
-	
-	method energia() = energia
-	
-	method tieneEnergia() = energia > 0
-	
-	method cantidadDeElementos() = inventario.size()
-	
-	method ultimoElemento() = inventario.last()
-	
-	method sumarElemento(unElemento) {
-		inventario.add(unElemento)
-	}
-	
-	method quitarElemento(unElemento) {
-		inventario.remove(unElemento)
-	}
-	
-	method lucharContra(unPersonaje) {
-		energia += 500
-	}
-	
-	method lucharContraEquipo(equipo) {
-		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
-	}
-	
-	method perderEnergia(danio) {
-		energia -= danio
-	}
-}
-	
-object tulipan {
-	var energia = 8400
-	const inventario = ["Rastrillo", "Maceta", "Maceta", "Manguera"]
-	
-	method gritoDeVictoria() = "¡Hora de cuidar las plantas!"
-	
-	method energia() = energia
-	
-	method tieneEnergia() = energia > 0
-	
-	method cantidadDeElementos() = inventario.size()
-	
-	method ultimoElemento() = inventario.last()
-	
-	method sumarElemento(unElemento) {
-		inventario.add(unElemento)
-	}
-	
-	method quitarElemento(unElemento) {
-		inventario.remove(unElemento)
-	}
-	
-	method lucharContra(unPersonaje) {
-		unPersonaje.perderEnergia(unPersonaje.energia() * 0.5)
-	}
-	
-	method lucharContraEquipo(equipo) {
+	// método concreto -> tiene una lógica proporcionada
+	method lucharContraEquipo(equipo) { // pamela lucha contra todos los del otro equipo
 		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
 	}
 	
@@ -103,40 +36,47 @@ object tulipan {
 	}
 }
 
-object primardo {
-	var energia = 7500
-	const inventario = ["Mascara", "Short de lucha"]
+// Clase concreta -> SI las instanciamos
+class Sanador inherits Personaje { // Sanador hereda a Personaje
 	
-	method gritoDeVictoria() = "¡¡Soy el mejoooooor!!"
-	
-	method energia() = energia
-	
-	method tieneEnergia() = energia > 0
-	
-	method cantidadDeElementos() = inventario.size()
-	
-	method ultimoElemento() = inventario.last()
-	
-	method sumarElemento(unElemento) {
-		inventario.add(unElemento)
-	}
-	
-	method quitarElemento(unElemento) {
-		inventario.remove(unElemento)
-	}
-	
-	method lucharContra(unPersonaje) {
-		unPersonaje.perderEnergia(unPersonaje.energia() * 0.7)
-	}
-	
-	method lucharContraEquipo(equipo) {
-		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
-	}
-	
-	method perderEnergia(danio) {
-		energia -= danio
+	override method lucharContra(unPersonaje) { // override -> redefino para que herede el método abstracto de Personaje
+		energia += energiaDeLucha // le definimos el comportamiento para que sea un método concreto
 	}
 }
+
+class Atacante inherits Personaje { // Atacante es subclase de Personaje
+	override method lucharContra(unPersonaje) {
+		unPersonaje.perderEnergia(unPersonaje.energia() * energiaDeLucha)
+	}
+}
+
+const pamela = new Sanador(
+	energia = 6000,
+	inventario = ["Algodon", "Agua oxigenada", "Cinta de papel", "Cinta de papel"],
+	energiaDeLucha = 400,
+	gritoDeVictoria = "¡Aca paso la Pamela!"
+)
+
+const pocardo = new Sanador(
+	energia = 5600,
+	inventario = ["Guitarra", "Curitas", "Cotonetes"],
+	energiaDeLucha = 500,
+	gritoDeVictoria = "¡Siente el poder de la musica!"
+)
+
+const tulipan = new Atacante(
+	energia = 8400,
+	inventario = ["Rastrillo", "Maceta", "Maceta", "Manguera"],
+	energiaDeLucha = 0.5,
+	gritoDeVictoria = "¡Hora de cuidar las plantas!"
+)
+	
+const primardo = new Atacante(
+	energia = 7500,
+	inventario = ["Mascara", "Short de lucha"],
+	energiaDeLucha = 0.7,
+	gritoDeVictoria = "¡¡Soy el mejoooooor!!"
+)
 
 object toro {
 	var energia = 7800
