@@ -1,4 +1,5 @@
 # [Gameflix and Chill](https://docs.google.com/document/d/1_SjhYafWzoMbXVYeRYEg8ajdnGGrriq2oq1JFLd7yiw/edit)
+![GAMEFLIX](https://th.bing.com/th/id/OIP.4x-2_FD-abA0pI71Yl0-1wHaHa?pid=ImgDet&rs=1)
 
 Buenas noticias! La reconocida empresa de Netflix busca expandir su mercado hacia el sector gamer, por lo cual ha decidido contratarnos para desarrollar su nuevo sistema “Gameflix”.
 Éste le permitirá a los usuarios, mediante una suscripción mensual, jugar una gran colección de juegos en cualquier momento sin necesidad de comprar ninguno!
