@@ -1,5 +1,6 @@
 // Clase abstracta -> NUNCA la instanciamos
 class Personaje { // superclase
+	
 	var energia
 	const inventario // la lista es const, aunque sus elementos (referencias a otros objetos) pueden cambiar
 	const energiaDeLucha
@@ -27,7 +28,7 @@ class Personaje { // superclase
 	}
 	
 	// método concreto -> tiene una lógica proporcionada
-	method lucharContraEquipo(equipo) { // pamela lucha contra todos los del otro equipo
+	method lucharContraEquipo(equipo) { // self lucha contra todos los del otro equipo
 		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
 	}
 	
@@ -44,7 +45,16 @@ class Sanador inherits Personaje { // Sanador hereda a Personaje
 	}
 }
 
+class UltraSanador inherits Sanador {
+	
+	override method lucharContraEquipo(equipo) {
+		super(equipo) // llama al mismo método pero de la superclase y le pasa equipo
+		energia += 1000
+	}
+}
+
 class Atacante inherits Personaje { // Atacante es subclase de Personaje
+	
 	override method lucharContra(unPersonaje) {
 		unPersonaje.perderEnergia(unPersonaje.energia() * energiaDeLucha)
 	}
@@ -78,39 +88,26 @@ const primardo = new Atacante(
 	gritoDeVictoria = "¡¡Soy el mejoooooor!!"
 )
 
-object toro {
-	var energia = 7800
-	const inventario = #{} // es un set para poder robar elementos no repetidos
+const lordByron = new UltraSanador(
+	energia = 4000,
+	inventario = ["pócimas", "jeringas"],
+	energiaDeLucha = 200,
+	gritoDeVictoria = "Necesito veneno de serpientes"
+)
+
+object toro inherits Personaje(
+	energia = 7800,
+	inventario = #{}, // es un set para poder robar elementos no repetidos
+	energiaDeLucha = 200,
+	gritoDeVictoria = "¡No se metan con el toro!"
+) {
 	
-	method gritoDeVictoria() =  "¡No se metan con el toro!"
-	
-	method energia() = energia
-	
-	method tieneEnergia() = energia > 0
-	
-	method cantidadDeElementos() = inventario.size()
-	
-	method ultimoElemento() = inventario.asList().last() // lo convierto en lista primero
-	
-	method sumarElemento(unElemento) {
-		inventario.add(unElemento)
-	}
-	
-	method quitarElemento(unElemento) {
-		inventario.remove(unElemento)
-	}
-	
-	method lucharContra(unPersonaje) {
+	override method lucharContra(unPersonaje) {
 		unPersonaje.perderEnergia(unPersonaje.cantidadDeElementos() * 200)
 		self.sumarElemento(unPersonaje.ultimoElemento())
 		unPersonaje.quitarElemento(unPersonaje.ultimoElemento())
 	}
 	
-	method lucharContraEquipo(equipo) {
-		equipo.forEach({unPersonaje => self.lucharContra(unPersonaje)})
-	}
-	
-	method perderEnergia(danio) {
-		energia -= danio
-	}
+	// redefinimos el método concreto
+	override method ultimoElemento() = inventario.asList().last() // lo convierto en lista primero
 }
