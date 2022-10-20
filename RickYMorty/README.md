@@ -1,10 +1,10 @@
-#[RICK & MORTY](https://docs.google.com/document/d/1YPZMyKI4fFij22QM8QfbDU8pfV78bP7vesl2__HIj64/edit)
+# [RICK & MORTY](https://docs.google.com/document/d/1YPZMyKI4fFij22QM8QfbDU8pfV78bP7vesl2__HIj64/edit)
 
-![Evil Morty](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lasfuriasmagazine.com%2Frick-y-morty-descubriendo-a-evil-morty%2F&psig=AOvVaw14jJ1x_vjiO7UaI70pmFyK&ust=1666353090059000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCPCb-qTf7voCFQAAAAAdAAAAABAD)
+![Evil Morty](https://www.lasfuriasmagazine.com/wp-content/uploads/2022/02/Rick-y-Morty-Descubriendo-a-Evil-Morty.jpg)
 
 _En esta oportunidad, los creadores de Rick & Morty nos pidieron que modelemos algunas situaciones de su serie en Wollok._
 
-##Parte 1
+## Parte 1
 Por un lado tenemos al gran Rick y por otro lado tenemos a los familiares: Morty, Summer, Beth y Jerry.
 
 Sabemos que a Rick le encanta irse de aventuras, pero como es medio miedoso, necesita siempre compañía de uno de sus familiares, es decir, Rick **no puede irse de aventuras sólo**. Si aún no tiene un acompañante para su aventura, elegiría algún familiar al azar.
