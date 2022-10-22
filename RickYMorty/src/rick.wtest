@@ -1,0 +1,28 @@
+import rick.*
+import familiar.*
+import error.*
+
+describe "Tests de rick"{
+	test "Si Rick intenta irse de aventuras con jerry, no puede y falla con una exception generica" {
+	
+		const unRick = new Rick (demencia = 20 , acompaniante = jerry)
+		
+		assert.throwsException({unRick.irseDeAventuras()}) // prueba q el código tenga un error y lance una excepción
+	}	
+	
+	test "Si Rick intenta irse de aventuras con jerry, no puede y falla con el mensaje Soy muy tonto y no puedo irme de aventuras" {
+
+		const unRick = new Rick (demencia = 20 , acompaniante = jerry)
+		
+		assert.throwsExceptionWithMessage("Soy muy tonto y no puedo irme de aventuras", {unRick.irseDeAventuras()})
+		// verifica el mensaje de la excepción q lanza el bloque de código en caso de romper
+	}	
+	
+	test "Si Rick intenta irse de aventuras con jerry, no puede y falla con la exception ExceptionIrseDeAventuras" {
+
+		const unRick = new Rick (demencia = 20 , acompaniante = jerry)
+		
+		assert.throwsExceptionWithType(new ExceptionIrseDeAventura(), {unRick.irseDeAventuras()})
+		// prueba el tipo de clase de la excepción lanzada por el bloque al romper
+	}	
+}

@@ -7,11 +7,10 @@ class Rick {
 	
 	method irseDeAventuras() { // No hace falta un if para q rompa el programa y lance una excepcion
 		try {
-			acompaniante.irseDeAventurasCon(self)
+			acompaniante.irDeAventurasCon(self) // código que puede fallar
 		} catch e : ExceptionIrseDeAventura {
-			demencia += 10
+			demencia += 10 // código a ejecutar si ocurre ExceptionIrseDeventura
 		}
-			
 	}
 	
 	method enloquecer(unidades) {
