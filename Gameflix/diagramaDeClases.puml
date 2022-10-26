@@ -1,8 +1,49 @@
 @startuml
 
-object infantil {
-  --
-  categoria()
+abstract class Subscripcion {
+
 }
+
+class Premium extends Subscripcion {
+
+}
+
+class Base extends Subscripcion {
+
+}
+
+class Prueba extends Subscripcion {
+
+}
+
+class Infantil extends Subscripcion {
+
+}
+
+class Usuario {
+	subscripcionActual
+
+	actualizarSubscripcion()
+}
+
+class Juego {
+	nombre
+	precio
+  categoria
+}
+
+object gameflix {
+	catalogo
+  usuarios
+
+	filtrarPorCategoria(unaCategoria)
+	buscarPorNombre(unNombre)
+
+	recomendacionAlAzar()
+}
+
+Juego "*" <-- gameflix : catalogo
+Usuario "*" <-- gameflix : usuarios
+Subscripcion <.. Usuario : subscripcionActual
 
 @enduml
