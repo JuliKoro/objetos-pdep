@@ -1,12 +1,12 @@
 class Usuario {
-	var subscripcionActual
+	var suscripcion
 	
-	
-	method actualizarSubscripcion(){
-	
+	method suscripcion(unaSuscripcion) {
+		suscripcion = unaSuscripcion
 	}
 	
-	
-	
+	method puedeJugar(unJuego) {
+		return suscripcion.permiteJugar(unJuego)
+	}
 }
 

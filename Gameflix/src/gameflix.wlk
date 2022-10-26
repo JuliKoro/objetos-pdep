@@ -1,18 +1,22 @@
 object gameflix {
 	var juegos = #{}
 	
+	method agregarJuego(unJuego) {
+		juegos.add(unJuego)
+	}
+	
 	method juegosDeCategoria(unaCategoria) {
 		return juegos.filter({ unJuego => unJuego.esDeCategoria(unaCategoria) })
 	}
-	
-	
-	method buscarPorNombre(unNombre) {
-		
+
+	method juegoQueSeLlama(unNombre) {
+		return juegos.findOrElse( // Busca y si no encuentra, ejecuta el otro bloque (Excepción)
+			{ unJuego => unJuego.seLlama(unNombre) }, 
+			{ throw new Exception(message = "No existe un juego con ese nombre.") }
+		)
 	}
 	
-	method recomendacionAlAzar() {
-		
+	method juegoAlAzar() {
+		return juegos.asList().anyOne()
 	}
-	
-	
 }
