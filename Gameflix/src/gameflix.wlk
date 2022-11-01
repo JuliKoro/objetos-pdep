@@ -1,5 +1,6 @@
 object gameflix {
-	var juegos = #{}
+	const juegos = #{}
+	const usuarios = #{}
 	
 	method agregarJuego(unJuego) {
 		juegos.add(unJuego)
@@ -18,5 +19,9 @@ object gameflix {
 	
 	method juegoAlAzar() {
 		return juegos.asList().anyOne()
+	}
+	
+	method cobrar() {
+		usuarios.forEach({ usuario => usuario.pagarSuscripcion() })
 	}
 }
